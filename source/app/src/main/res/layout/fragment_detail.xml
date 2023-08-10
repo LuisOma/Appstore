@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="200dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <me.relex.circleindicator.CircleIndicator
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:elevation="4dp"/>
+
+        <View
+            android:id="@+id/separator_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_300"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/viewpager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ImageView
+            android:id="@+id/app_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/content_description"
+            android:fitsSystemWindows="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/separator_view" />
+
+        <TextView
+            android:id="@+id/title_detail_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            style="@style/TitleAppearance"
+            app:layout_constraintStart_toEndOf="@id/app_image"
+            app:layout_constraintTop_toTopOf="@id/app_image"
+            tools:text="App" />
+
+        <TextView
+            android:id="@+id/dev_detail_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SubTitleDetailAppearance"
+            app:layout_constraintStart_toStartOf="@id/title_detail_textview"
+            app:layout_constraintTop_toBottomOf="@id/title_detail_textview"
+            tools:text="Dev" />
+
+        <TextView
+            android:id="@+id/description_detail_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SubTitleAppearance"
+            app:layout_constraintStart_toStartOf="@id/title_detail_textview"
+            app:layout_constraintTop_toBottomOf="@id/dev_detail_textview"
+            tools:text="Descripción" />
+
+        <TextView
+            android:id="@+id/price_detail_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TitleAppearance"
+            android:text="@string/free"
+            app:layout_constraintStart_toStartOf="@id/title_detail_textview"
+            app:layout_constraintTop_toBottomOf="@id/description_detail_textview"
+            tools:text="$ 0.5" />
+
+        <View
+            android:id="@+id/separator_info_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_300"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/price_detail_textview"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <RatingBar
+            android:id="@+id/rating_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/ratingBarStyleSmall"
+            android:stepSize="0.5"
+            android:numStars="5"
+            app:layout_constraintStart_toStartOf="@id/title_detail_textview"
+            app:layout_constraintTop_toBottomOf="@+id/separator_info_view"
+            app:layout_constraintBottom_toTopOf="@+id/separator_rating_view" />
+
+        <TextView
+            android:id="@+id/rating_detail_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SubTitleAppearance"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="10dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/rating_bar"
+            app:layout_constraintTop_toBottomOf="@id/separator_info_view"
+            tools:text="0.5" />
+
+        <View
+            android:id="@+id/separator_rating_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_300"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/rating_detail_textview"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/comments_list_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/separator_rating_view"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/install_button"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/install"
+            android:backgroundTint="@color/green_700"
+            android:layout_marginTop="16dp"
+            android:textAllCaps="false"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/comments_list_recycler"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <Button
+            android:id="@+id/close_button"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/close"
+            android:backgroundTint="@color/gray_600"
+            android:layout_marginEnd="14dp"
+            android:layout_marginTop="16dp"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@id/comments_list_recycler"
+            app:layout_constraintEnd_toStartOf="@id/install_button"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
